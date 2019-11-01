@@ -16,7 +16,7 @@ def get_indices_of_item_weights(weights, length, limit):
     for index, item in enumerate(weights):
         weight_left = limit - item
         # print('looking for key', weight_left,
-              hash_table_retrieve(ht, weight_left))
+        hash_table_retrieve(ht, weight_left))
         if hash_table_retrieve(ht, weight_left) != None:
             # print('found item')
             if hash_table_retrieve(ht, weight_left) > index:
