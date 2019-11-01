@@ -19,5 +19,25 @@ def reconstruct_trip(tickets, length):
     """
     YOUR CODE HERE
     """
+    # Loop through tickets, making hash table of route
+    for ticket in tickets:
 
+        hash_table_insert(hashtable, ticket.source, ticket.destination)
+
+    # print(hash_table_retrieve(hashtable, 'NONE'))
+
+    key = 'NONE'
+    index = 0
+    # Loop through hash table until dest == 'NONE'
+    # starting with hashtable['NONE']
+    while hash_table_retrieve(hashtable, key) != 'NONE':
+        print(hash_table_retrieve(hashtable, key))
+        # push destination to answer arr
+        route[index] = hash_table_retrieve(hashtable, key)
+        print('route', route)
+        # Set source to dest
+        index += 1
+        key = hash_table_retrieve(hashtable, key)
+    else:
+        route[index] = hash_table_retrieve(hashtable, key)
     return route

@@ -15,9 +15,10 @@ def get_indices_of_item_weights(weights, length, limit):
     answer = []
     for index, item in enumerate(weights):
         weight_left = limit - item
-        # print('looking for key', weight_left)
-        if hash_table_retrieve(ht, weight_left):
-            # print('found item')
+        print('looking for key', weight_left,
+              hash_table_retrieve(ht, weight_left))
+        if hash_table_retrieve(ht, weight_left) != None:
+            print('found item')
             if hash_table_retrieve(ht, weight_left) > index:
                 answer.append(hash_table_retrieve(ht, weight_left))
                 answer.append(index)
@@ -25,7 +26,6 @@ def get_indices_of_item_weights(weights, length, limit):
                 answer.append(index)
                 answer.append(hash_table_retrieve(ht, weight_left))
         hash_table_insert(ht, item, index)
-        # print('item in ht', hash_table_retrieve(ht, item))
     print(answer)
     if len(answer) == 2:
         return tuple(answer)
