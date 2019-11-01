@@ -12,8 +12,25 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
-
-    return None
+    answer = []
+    for index, item in enumerate(weights):
+        weight_left = limit - item
+        # print('looking for key', weight_left)
+        if hash_table_retrieve(ht, weight_left):
+            # print('found item')
+            if hash_table_retrieve(ht, weight_left) > index:
+                answer.append(hash_table_retrieve(ht, weight_left))
+                answer.append(index)
+            else:
+                answer.append(index)
+                answer.append(hash_table_retrieve(ht, weight_left))
+        hash_table_insert(ht, item, index)
+        # print('item in ht', hash_table_retrieve(ht, item))
+    print(answer)
+    if len(answer) == 2:
+        return tuple(answer)
+    else:
+        return None
 
 
 def print_answer(answer):
